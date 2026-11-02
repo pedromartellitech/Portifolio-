@@ -1061,7 +1061,8 @@ a {
    Vitrine ao vivo + explorador interativo em tela ampliada.
 ========================================================= */
 
-.preview-screen--portfolio-live {
+.preview-screen--portfolio-live,
+.preview-screen--finance-live {
     position: relative;
     display: block;
     padding: 0;
@@ -1069,9 +1070,12 @@ a {
     background: #0b1012;
 }
 .preview-screen--portfolio-live .finance-sidebar,
-.preview-screen--portfolio-live .finance-content { display: none; }
+.preview-screen--portfolio-live .finance-content,
+.preview-screen--finance-live .finance-sidebar,
+.preview-screen--finance-live .finance-content { display: none; }
 .portfolio-live-preview { display: none; }
-.preview-screen--portfolio-live .portfolio-live-preview {
+.preview-screen--portfolio-live .portfolio-live-preview,
+.preview-screen--finance-live .portfolio-live-preview {
     display: block;
     position: absolute;
     top: 0;
@@ -1398,8 +1402,8 @@ body.portfolio-viewer-open { overflow: hidden; }
                     <div class="project-list" id="project-list">
                         <button class="project-row is-active" type="button" data-project="finance-os" data-category="system" aria-pressed="true">
                             <span class="project-row__index">01</span>
-                            <span class="project-row__main"><strong>FINANCE OS</strong><small>SISTEMA / GESTÃO FINANCEIRA</small></span>
-                            <span class="project-row__stack">PYTHON / STREAMLIT / SQLITE</span>
+                            <span class="project-row__main"><strong>FINANCE OS 2.0</strong><small>APLICAÇÃO CONCLUÍDA / GESTÃO FINANCEIRA</small></span>
+                            <span class="project-row__stack">PYTHON / STREAMLIT / SQLITE / PANDAS</span>
                             <span class="project-row__year">2026</span>
                             <span class="project-row__arrow" aria-hidden="true">↗</span>
                         </button>
@@ -1430,7 +1434,7 @@ body.portfolio-viewer-open { overflow: hidden; }
                     </div>
 
                     <div class="project-list-footer">
-                        <span>ARQUIVO / 04 PROJETOS • ESTADOS VARIADOS</span>
+                        <span>ARQUIVO / 04 PROJETOS • 01 E 03 CONCLUÍDOS</span>
                         <span>SELECIONE UM PROJETO PARA EXPLORAR</span>
                     </div>
                 </div>
@@ -1439,11 +1443,11 @@ body.portfolio-viewer-open { overflow: hidden; }
                     <div class="project-number" id="project-number" aria-hidden="true">01</div>
 
                     <div class="focus-topline">
-                        <span id="focus-type">SISTEMA / APLICAÇÃO</span>
+                        <span id="focus-type">APLICAÇÃO / GESTÃO FINANCEIRA</span>
 
                         <span class="focus-status">
                             <i aria-hidden="true"></i>
-                            <b id="focus-status">ATIVO</b>
+                            <b id="focus-status">CONCLUÍDO</b>
                         </span>
                     </div>
 
@@ -1456,12 +1460,12 @@ body.portfolio-viewer-open { overflow: hidden; }
                                 <b id="preview-label">FINANCE.OS</b>
                             </div>
 
-                            <div class="preview-screen preview-screen--finance" id="preview-screen">
+                            <div class="preview-screen preview-screen--finance-live" id="preview-screen">
                                 <!-- Prévia REAL do Projeto 03. Ativada somente ao selecionar Portfólio. -->
                                 <iframe
                                     id="portfolio-live-preview"
                                     class="portfolio-live-preview"
-                                    title="Prévia visual do portfólio Pedro Martelli"
+                                    title="Prévia do projeto selecionado"
                                     tabindex="-1"
                                     aria-hidden="true"
                                     loading="lazy"></iframe>
@@ -1500,11 +1504,10 @@ body.portfolio-viewer-open { overflow: hidden; }
                     <div class="focus-copy">
                         <p class="focus-label">PROJETO SELECIONADO</p>
 
-                        <h2 id="focus-title">FINANCE OS</h2>
+                        <h2 id="focus-title">FINANCE OS 2.0</h2>
 
                         <p class="focus-description" id="focus-description">
-                            Sistema pessoal de gestão financeira desenvolvido para organizar contas,
-                            lançamentos, categorias e indicadores em uma experiência centralizada.
+                            Aplicação financeira em Python e Streamlit, com movimentações, contas a pagar e receber, orçamentos, metas e relatórios. Explore o aplicativo real no Streamlit Cloud.
                         </p>
 
                         <div class="focus-details">
@@ -1526,12 +1529,12 @@ body.portfolio-viewer-open { overflow: hidden; }
 
                         <div class="focus-actions">
                             <button class="focus-primary" id="explore-project" type="button">
-                                <span>EXPLORAR SISTEMA</span>
+                                <span>EXPLORAR NO LAB</span>
                                 <b>↗</b>
                             </button>
 
                             <span class="focus-note" id="focus-note">
-                                EXPLORAR UM PROJETO PUBLICADO
+                                APLICAÇÃO ONLINE · PRÉVIA ILUSTRATIVA / EXECUTE O SISTEMA REAL
                             </span>
                         </div>
                     </div>
@@ -1607,12 +1610,12 @@ body.portfolio-viewer-open { overflow: hidden; }
                     <span class="portfolio-viewer__dot" aria-hidden="true"></span>
                     <div>
                         <strong id="portfolio-viewer-title">03 / PORTFÓLIO PEDRO MARTELLI</strong>
-                        <small>PROJETO REAL · VISUALIZAÇÃO INTERATIVA</small>
+                        <small id="portfolio-viewer-subtitle">PROJETO REAL · VISUALIZAÇÃO INTERATIVA</small>
                     </div>
                 </div>
                 <div class="portfolio-viewer__actions">
-                    <a href="../index.html" target="_blank" rel="noopener noreferrer">ABRIR EM NOVA ABA ↗</a>
-                    <a href="https://github.com/pedromartellitech/pedro-martelli" target="_blank"
+                    <a id="portfolio-viewer-open-tab" href="../index.html" target="_blank" rel="noopener noreferrer">ABRIR EM NOVA ABA ↗</a>
+                    <a id="portfolio-viewer-source" href="https://github.com/pedromartellitech/pedro-martelli" target="_blank"
                        rel="noopener noreferrer">GITHUB ↗</a>
                     <button id="portfolio-viewer-close" type="button"
                             aria-label="Fechar projeto e voltar ao Project Lab">✕ <span>FECHAR</span></button>
@@ -1653,33 +1656,35 @@ body.portfolio-viewer-open { overflow: hidden; }
 
         "finance-os": {
             number: "01",
-            title: "FINANCE OS",
-            type: "SISTEMA / APLICAÇÃO",
-            status: "ATIVO",
+            title: "FINANCE OS 2.0",
+            type: "APLICAÇÃO / GESTÃO FINANCEIRA",
+            status: "CONCLUÍDO",
 
             description:
-                "Sistema pessoal de gestão financeira desenvolvido para organizar contas, lançamentos, categorias e indicadores em uma experiência centralizada.",
+                "Sistema financeiro publicado com contas, receitas, despesas, transferências, compromissos, metas, orçamentos e relatórios. Execute a aplicação real em Python e Streamlit na nuvem (modo de demonstração recomendado).",
 
             role:
-                "DESIGN + DESENVOLVIMENTO",
+                "DESENVOLVIMENTO + ARQUITETURA",
 
             stack:
                 "PYTHON / STREAMLIT / SQLITE / PANDAS",
 
             area:
-                "GESTÃO FINANCEIRA",
+                "SOFTWARE / DADOS / GESTÃO",
 
             preview:
-                "FINANCE.OS",
+                "FINANCE OS / INTERFACE",
 
             previewClass:
-                "preview-screen--finance",
+                "preview-screen--finance-live",
 
             accent:
-                "#C66A4A",
+                "#E9AD78",
 
             url:
-                "finance-os/"
+                "https://financeos-hicbozjzryappyuggziqqmc.streamlit.app/",
+            sourceUrl:
+                "https://financeos-hicbozjzryappyuggziqqmc.streamlit.app/"
         },
 
 
@@ -1826,6 +1831,10 @@ body.portfolio-viewer-open { overflow: hidden; }
     const portfolioViewerFrame = document.getElementById("portfolio-viewer-frame");
     const portfolioViewerClose = document.getElementById("portfolio-viewer-close");
     const portfolioViewerLoading = document.getElementById("portfolio-viewer-loading");
+    const viewerTitle = document.getElementById("portfolio-viewer-title");
+    const viewerSubtitle = document.getElementById("portfolio-viewer-subtitle");
+    const viewerOpenTab = document.getElementById("portfolio-viewer-open-tab");
+    const viewerSource = document.getElementById("portfolio-viewer-source");
     const labShell = document.getElementById("lab-shell");
     let viewerReturnFocus = null;
 
@@ -1844,28 +1853,57 @@ body.portfolio-viewer-open { overflow: hidden; }
 
     function updatePortfolioPreview() {
         if (!portfolioPreview || !previewScreen) return;
-        const showingPortfolio = selectedProject === "portfolio";
+        const path = selectedProject === "portfolio"
+            ? "../index.html"
+            : selectedProject === "finance-os"
+                ? "finance-os/index.html?previa=1"
+                : null;
         const viewerOpen = portfolioViewer && !portfolioViewer.hidden;
-        if (showingPortfolio && !viewerOpen) {
-            if (portfolioPreview.getAttribute("src") !== "../index.html") {
-                portfolioPreview.setAttribute("src", "../index.html");
+        if (path && !viewerOpen) {
+            if (portfolioPreview.getAttribute("src") !== path) {
+                portfolioPreview.setAttribute("src", path);
             }
             requestAnimationFrame(resizePortfolioPreview);
         } else if (portfolioPreview.hasAttribute("src")) {
-            // Libera recursos quando não estamos exibindo a prévia.
+            // Não mantém iframes em execução quando outro projeto é selecionado.
             portfolioPreview.removeAttribute("src");
         }
     }
 
     function openPortfolioViewer() {
         if (!portfolioViewer || !portfolioViewerFrame) return;
+        const isFinance = selectedProject === "finance-os";
+        // Aplicativo real em Streamlit; a integração por iframe exige app público.
+        const financePublicUrl = "https://financeos-hicbozjzryappyuggziqqmc.streamlit.app/";
+        const route = isFinance ? `${financePublicUrl}?embed=true` : "../index.html";
         viewerReturnFocus = document.activeElement;
+        if (viewerTitle) viewerTitle.textContent = isFinance
+            ? "01 / FINANCE OS 2.0" : "03 / PORTFÓLIO PEDRO MARTELLI";
+        if (viewerSubtitle) viewerSubtitle.textContent = isFinance
+            ? "APLICAÇÃO REAL · EXECUTANDO NO STREAMLIT CLOUD" : "PROJETO REAL · VISUALIZAÇÃO INTERATIVA";
+        if (viewerOpenTab) {
+            viewerOpenTab.href = isFinance ? financePublicUrl : route;
+            viewerOpenTab.textContent = isFinance ? "ABRIR FINANCE OS ↗" : "ABRIR EM NOVA ABA ↗";
+        }
+        if (viewerSource) {
+            viewerSource.href = isFinance
+                ? "https://github.com/pedromartellitech/FINANCE.OS"
+                : "https://github.com/pedromartellitech/pedro-martelli";
+            viewerSource.textContent = isFinance ? "CÓDIGO NO GITHUB ↗" : "GITHUB ↗";
+            viewerSource.target = "_blank";
+            viewerSource.removeAttribute("download");
+        }
+        if (portfolioViewerLoading) portfolioViewerLoading.textContent = isFinance
+            ? "CONECTANDO AO FINANCE OS ONLINE… SE NÃO ABRIR, USE ‘ABRIR FINANCE OS’ NA BARRA SUPERIOR." : "INICIANDO PROJETO 03…";
         portfolioViewer.hidden = false;
         document.body.classList.add("portfolio-viewer-open");
         if (labShell) labShell.inert = true;
         if (portfolioViewerLoading) portfolioViewerLoading.hidden = false;
         updatePortfolioPreview();
-        portfolioViewerFrame.src = "../index.html";
+        portfolioViewerFrame.title = isFinance
+            ? "Finance OS 2.0 — aplicativo Streamlit real"
+            : "Portfólio completo de Pedro Martelli — projeto 03";
+        portfolioViewerFrame.src = route;
         if (portfolioViewerClose) portfolioViewerClose.focus();
     }
 
@@ -2058,6 +2096,7 @@ body.portfolio-viewer-open { overflow: hidden; }
 
                 previewScreen.classList.remove(
                     "preview-screen--finance",
+                    "preview-screen--finance-live",
                     "preview-screen--portfolio",
                     "preview-screen--portfolio-live"
                 );
@@ -2098,7 +2137,7 @@ body.portfolio-viewer-open { overflow: hidden; }
                     ) {
 
                         label.textContent =
-                            "EXPLORAR SISTEMA";
+                            "EXECUTAR NO LAB";
 
                     } else {
 
@@ -2113,9 +2152,15 @@ body.portfolio-viewer-open { overflow: hidden; }
             }
 
 
-            /* Exibe o GitHub apenas quando o portfólio está selecionado. */
+            /* Link direto para o Finance OS; GitHub para o portfólio. */
             if (project.sourceUrl) {
                 sourceLink.href = project.sourceUrl;
+                sourceLink.setAttribute("aria-label", projectId === "finance-os"
+                    ? "Abrir o Finance OS real em nova aba"
+                    : "Abrir o código-fonte do portfólio no GitHub");
+                sourceLink.innerHTML = projectId === "finance-os"
+                    ? "<span>ABRIR FINANCE OS ONLINE</span><b>↗</b>"
+                    : "<span>CÓDIGO-FONTE</span><b>↗</b>";
                 sourceLink.style.display = "inline-flex";
             } else {
                 sourceLink.style.display = "none";
@@ -2129,7 +2174,9 @@ body.portfolio-viewer-open { overflow: hidden; }
                     ? "PÁGINA AINDA NÃO PUBLICADA"
                     : projectId === "portfolio"
                         ? "PROJETO FUNCIONAL · ABRE AQUI NO LAB"
-                        : "PROJETO DISPONÍVEL PARA EXPLORAR";
+                        : projectId === "finance-os"
+                            ? "APLICAÇÃO REAL NO STREAMLIT CLOUD · PRÉVIA ILUSTRATIVA"
+                            : "PROJETO DISPONÍVEL PARA EXPLORAR";
             }
 
 
@@ -2337,7 +2384,7 @@ body.portfolio-viewer-open { overflow: hidden; }
 
 
                 // O Projeto 03 executa o portfólio real dentro do Lab.
-                if (selectedProject === "portfolio") {
+                if (selectedProject === "portfolio" || selectedProject === "finance-os") {
                     openPortfolioViewer();
                     return;
                 }
