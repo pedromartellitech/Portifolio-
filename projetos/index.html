@@ -1394,26 +1394,96 @@ body.portfolio-viewer-open { overflow: hidden; }
 .central__telemetria small{color:#87969d;font-size:8px}.central__telemetria strong{color:#c5e5ea;font:700 13px/1.2 Consolas,monospace;white-space:nowrap}
 /* Preview 3D: só aplicado se JS ativar; preserva os estilos existentes. */
 @media(hover:hover) and (pointer:fine){.lab-tilt-enabled .focus-preview{perspective:1100px;overflow:visible;transition:filter .18s ease;will-change:filter}.lab-tilt-enabled .preview-frame{transform:perspective(1000px) rotateX(var(--lab-tilt-x,0deg)) rotateY(var(--lab-tilt-y,0deg)) translateY(var(--lab-tilt-lift,0px))!important;transition:transform .2s ease-out;transform-style:preserve-3d;box-shadow:0 36px 85px rgba(0,0,0,.55),0 0 32px rgba(121,183,200,.09)}.lab-tilt-enabled .preview-bar{transform:translateZ(7px)}.lab-tilt-enabled .project-row:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}}
-/* Mapa de conexões */
-.mapa-lab{margin:43px 0 36px;padding:clamp(23px,3vw,38px);border:1px solid rgba(121,183,200,.19);background:linear-gradient(135deg,rgba(12,20,25,.92),rgba(11,11,11,.95) 70%);overflow:hidden}
-.mapa-lab::before{content:"";position:absolute;inset:-100px -50px auto auto;width:350px;height:350px;background:radial-gradient(circle,rgba(121,183,200,.12),transparent 66%);pointer-events:none}
+/* Mapa cartográfico de conhecimentos */
+.mapa-lab{margin:43px 0 36px;padding:clamp(22px,3vw,38px);border:1px solid rgba(121,183,200,.19);background:linear-gradient(135deg,rgba(7,16,20,.96),rgba(9,10,12,.97) 70%);overflow:hidden}
+.mapa-lab::before{content:"";position:absolute;inset:-120px auto auto -60px;width:420px;height:420px;background:radial-gradient(circle,rgba(121,183,200,.1),transparent 65%);pointer-events:none}
+.mapa-lab::after{content:"";position:absolute;right:-80px;bottom:-120px;width:320px;height:320px;background:radial-gradient(circle,rgba(198,106,74,.08),transparent 70%);pointer-events:none}
 .mapa-lab__intro{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:26px}
 .mapa-lab__kicker{font-size:9px;letter-spacing:.17em;color:var(--cyan);font-weight:800;margin:0 0 14px}
 .mapa-lab h2{font-size:clamp(28px,4vw,49px);margin:0;letter-spacing:-.05em;line-height:1.05}.mapa-lab h2 span{color:var(--terracotta)}
-.mapa-lab__intro>p{font-size:12px;line-height:1.7;max-width:330px;color:#9babb1;margin:0}
-.mapa-lab__grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.9fr);gap:20px}
-.mapa-lab__rede{position:relative;min-height:244px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);align-items:stretch;gap:12px;padding:12px;border:1px solid rgba(121,183,200,.12);background:radial-gradient(ellipse at 50% 50%,rgba(121,183,200,.075),transparent 70%)}
-.mapa-lab__rede::before,.mapa-lab__rede::after{content:"";position:absolute;pointer-events:none;z-index:0;inset:50% 4% auto;border-top:1px dashed rgba(121,183,200,.23)}
-.mapa-lab__rede::after{inset:5% 50% 5% auto;border-left:1px dashed rgba(121,183,200,.23);border-top:0}
-.mapa-lab__eixo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);width:18px;height:18px;background:#142329;border:1px solid var(--cyan);z-index:1;box-shadow:0 0 22px rgba(121,183,200,.4)}
-.mapa-lab__no{position:relative;z-index:2;min-width:0;min-height:92px;padding:12px 7px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(121,183,200,.19);background:rgba(10,17,20,.92);color:var(--cyan);font-size:24px;cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease,background .2s ease}
-.mapa-lab__no span{color:#e7eef0;font-size:9px;line-height:1.35;font-weight:800;letter-spacing:.085em;text-align:center}
-.mapa-lab__no:hover,.mapa-lab__no:focus-visible,.mapa-lab__no.is-selected{border-color:rgba(121,183,200,.7);background:rgba(33,63,72,.6);box-shadow:inset 0 0 22px rgba(121,183,200,.05),0 0 20px rgba(121,183,200,.09)}
-.mapa-lab__no:hover{transform:translateY(-3px)}
-.mapa-lab__detalhe{padding:26px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.09);background:rgba(5,9,11,.75)}
-.mapa-lab__detalhe>small{font-size:9px;letter-spacing:.14em;font-weight:700;color:#79b7c8}.mapa-lab__detalhe h3{font-size:clamp(22px,2vw,30px);letter-spacing:-.035em;line-height:1.12;margin:22px 0 10px}.mapa-lab__detalhe p{color:#b3c2c6;line-height:1.7;font-size:12px;margin:0 0 20px}
-.mapa-lab__etiquetas{display:flex;flex-wrap:wrap;gap:7px}.mapa-lab__etiquetas span{font-size:9px;padding:8px 9px;color:#acd5df;background:rgba(121,183,200,.09);border:1px solid rgba(121,183,200,.16)}
-.mapa-lab__rodape{margin-top:auto;padding-top:23px;color:#74878d;font-size:10px;line-height:1.5}
+.mapa-lab__intro>p{font-size:12px;line-height:1.7;max-width:420px;color:#9babb1;margin:0}
+.mapa-lab__grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(290px,.92fr);gap:22px;align-items:stretch}
+.mapa-lab__cartografia{position:relative;min-height:460px;padding:18px;border:1px solid rgba(121,183,200,.16);background:linear-gradient(180deg,rgba(8,17,21,.92),rgba(7,9,11,.92));overflow:hidden}
+.mapa-lab__cartografia::before{content:"";position:absolute;inset:0;background:
+linear-gradient(rgba(121,183,200,.08) 1px, transparent 1px),
+linear-gradient(90deg, rgba(121,183,200,.08) 1px, transparent 1px),
+radial-gradient(circle at 50% 50%, rgba(121,183,200,.08), transparent 52%);
+background-size:52px 52px,52px 52px,100% 100%;opacity:.6;pointer-events:none}
+.mapa-lab__cartografia::after{content:"";position:absolute;inset:22px;border:1px solid rgba(255,255,255,.04);pointer-events:none}
+.mapa-lab__hud{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;color:#9cb0b6;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.mapa-lab__hud span b{color:#ecf3f5;font-weight:700}
+.mapa-lab__canvas{position:relative;min-height:380px}
+.mapa-lab__crosshair{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:132px;height:132px;border:1px dashed rgba(121,183,200,.2);border-radius:50%;pointer-events:none;z-index:1;box-shadow:0 0 0 26px rgba(121,183,200,.02),0 0 0 54px rgba(121,183,200,.01)}
+.mapa-lab__crosshair::before,.mapa-lab__crosshair::after{content:"";position:absolute;background:rgba(121,183,200,.18)}
+.mapa-lab__crosshair::before{left:50%;top:-54px;bottom:-54px;width:1px;transform:translateX(-50%)}
+.mapa-lab__crosshair::after{top:50%;left:-54px;right:-54px;height:1px;transform:translateY(-50%)}
+.mapa-lab__line{position:absolute;height:1px;transform-origin:left center;background:linear-gradient(90deg, rgba(121,183,200,.04), rgba(121,183,200,.42), rgba(121,183,200,.04));pointer-events:none;z-index:1}
+.mapa-lab__line::after{content:"";position:absolute;right:-3px;top:50%;width:6px;height:6px;border-radius:50%;background:rgba(121,183,200,.55);transform:translateY(-50%)}
+.mapa-lab__line--1{left:26%;top:27%;width:23%;transform:rotate(11deg)}
+.mapa-lab__line--2{left:48%;top:25%;width:26%;transform:rotate(27deg)}
+.mapa-lab__line--3{left:21%;top:47%;width:29%;transform:rotate(-12deg)}
+.mapa-lab__line--4{left:50%;top:53%;width:22%;transform:rotate(-14deg)}
+.mapa-lab__line--5{left:35%;top:67%;width:28%;transform:rotate(-22deg)}
+.mapa-lab__sector{position:absolute;color:#68818a;font-size:10px;letter-spacing:.18em;text-transform:uppercase;pointer-events:none;z-index:1}
+.mapa-lab__sector--nw{left:6px;top:12px}.mapa-lab__sector--ne{right:10px;top:12px}.mapa-lab__sector--sw{left:6px;bottom:10px}.mapa-lab__sector--se{right:10px;bottom:10px}
+.mapa-lab__node{position:absolute;z-index:2;width:min(170px,32%);min-height:88px;padding:12px 12px 11px;display:grid;gap:6px;align-content:start;border:1px solid rgba(121,183,200,.18);background:linear-gradient(180deg,rgba(8,16,20,.95),rgba(13,25,30,.9));color:#e9f2f4;cursor:pointer;text-align:left;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease;box-shadow:0 10px 26px rgba(0,0,0,.18)}
+.mapa-lab__node:hover,.mapa-lab__node:focus-visible,.mapa-lab__node.is-selected{transform:translateY(-3px) scale(1.01);border-color:rgba(121,183,200,.75);box-shadow:0 0 0 1px rgba(121,183,200,.22),0 20px 38px rgba(0,0,0,.3),0 0 22px rgba(121,183,200,.12);background:linear-gradient(180deg,rgba(16,33,40,.98),rgba(8,14,17,.98))}
+.mapa-lab__node small{display:flex;justify-content:space-between;gap:10px;color:#80a7b4;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+.mapa-lab__node strong{display:block;font-size:13px;letter-spacing:.08em;line-height:1.2}
+.mapa-lab__node p{margin:0;color:#8fa5ac;font-size:10px;line-height:1.45}
+.mapa-lab__node b{color:var(--terracotta);font-size:10px;letter-spacing:.16em}
+.mapa-lab__node--software{left:8%;top:15%}
+.mapa-lab__node--dados{left:39%;top:18%}
+.mapa-lab__node--arquitetura{left:68%;top:16%}
+.mapa-lab__node--gestao{left:14%;top:56%}
+.mapa-lab__node--ia{left:44%;top:54%}
+.mapa-lab__node--quantica{left:70%;top:65%}
+.mapa-lab__legend{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:flex;flex-wrap:wrap;gap:10px 18px;padding:10px 12px;border:1px solid rgba(255,255,255,.07);background:rgba(3,7,9,.62);backdrop-filter:blur(5px);color:#8aa0a7;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.mapa-lab__legend span::before{content:"";display:inline-block;width:10px;height:10px;margin-right:7px;vertical-align:-1px;border:1px solid rgba(121,183,200,.4);background:rgba(121,183,200,.14)}
+.mapa-lab__legend span:nth-child(2)::before{border-color:rgba(141,213,181,.5);background:rgba(141,213,181,.16)}
+.mapa-lab__legend span:nth-child(3)::before{border-color:rgba(233,173,120,.5);background:rgba(233,173,120,.16)}
+.mapa-lab__detalhe{padding:22px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,rgba(5,9,11,.82),rgba(6,12,15,.88))}
+.mapa-lab__detalhe>small{font-size:9px;letter-spacing:.16em;font-weight:700;color:#79b7c8}
+.mapa-lab__detalhe h3{font-size:clamp(22px,2vw,31px);letter-spacing:-.035em;line-height:1.12;margin:18px 0 10px}
+.mapa-lab__detalhe p{color:#b3c2c6;line-height:1.72;font-size:12px;margin:0 0 18px}
+.mapa-lab__metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.mapa-lab__metric{padding:12px;border:1px solid rgba(121,183,200,.12);background:rgba(121,183,200,.05)}
+.mapa-lab__metric span{display:block;color:#7f9aa1;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
+.mapa-lab__metric strong{display:block;color:#edf5f7;font-size:14px;letter-spacing:.02em}
+.mapa-lab__etiquetas{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}.mapa-lab__etiquetas span{font-size:9px;padding:8px 9px;color:#acd5df;background:rgba(121,183,200,.09);border:1px solid rgba(121,183,200,.16)}
+.mapa-lab__rotas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.mapa-lab__rota{font-size:10px;padding:10px 12px;color:#f1efe7;background:rgba(233,173,120,.08);border:1px solid rgba(233,173,120,.18);letter-spacing:.1em;text-transform:uppercase}
+.mapa-lab__rodape{margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);color:#74878d;font-size:10px;line-height:1.6}
+@media (max-width: 1100px){
+  .mapa-lab__grid{grid-template-columns:1fr}
+  .mapa-lab__cartografia{min-height:420px}
+}
+@media (max-width: 820px){
+  .mapa-lab__intro{flex-direction:column;align-items:flex-start}
+  .mapa-lab__cartografia{padding:14px;min-height:520px}
+  .mapa-lab__node{width:min(46%,210px)}
+  .mapa-lab__node--software{left:4%;top:10%}
+  .mapa-lab__node--dados{left:52%;top:12%}
+  .mapa-lab__node--arquitetura{left:48%;top:34%}
+  .mapa-lab__node--gestao{left:6%;top:39%}
+  .mapa-lab__node--ia{left:7%;top:66%}
+  .mapa-lab__node--quantica{left:51%;top:66%}
+}
+@media (max-width: 620px){
+  .mapa-lab{padding:18px}
+  .mapa-lab__cartografia{min-height:760px}
+  .mapa-lab__hud{flex-direction:column;align-items:flex-start}
+  .mapa-lab__node{width:calc(100% - 14px);left:7px !important;min-height:76px}
+  .mapa-lab__node--software{top:58px}
+  .mapa-lab__node--dados{top:156px}
+  .mapa-lab__node--arquitetura{top:254px}
+  .mapa-lab__node--gestao{top:352px}
+  .mapa-lab__node--ia{top:450px}
+  .mapa-lab__node--quantica{top:548px}
+  .mapa-lab__line,.mapa-lab__crosshair{display:none}
+  .mapa-lab__legend{position:static;margin-top:650px}
+  .mapa-lab__metrics{grid-template-columns:1fr}
+}
 /* Assistente + terminal */
 .lab-widget{position:fixed;right:clamp(12px,3vw,44px);bottom:clamp(12px,3vw,36px);width:min(440px,calc(100vw - 24px));max-height:min(650px,calc(100dvh - 24px));display:flex;flex-direction:column;z-index:9000;border:1px solid rgba(121,183,200,.45);background:#0b1115;color:#edf5f7;box-shadow:0 26px 90px rgba(0,0,0,.83),0 0 36px rgba(121,183,200,.09);overflow:hidden}
 .lab-widget--terminal{width:min(580px,calc(100vw - 24px));background:#090e11}
@@ -1704,26 +1774,45 @@ body.portfolio-viewer-open { overflow: hidden; }
             </section>
             <section class="mapa-lab" id="mapa-conhecimento" aria-labelledby="mapa-titulo">
                 <div class="mapa-lab__intro">
-                    <div><p class="mapa-lab__kicker">CONEXÕES / TECNOLOGIA &amp; PESQUISA</p>
-                        <h2 id="mapa-titulo">Mapa de <span>conhecimentos.</span></h2></div>
-                    <p>Selecione um núcleo para conhecer meus interesses, experiências e áreas de estudo.</p>
+                    <div><p class="mapa-lab__kicker">CARTOGRAFIA TÉCNICA / NÚCLEOS DE ESTUDO E PRÁTICA</p>
+                        <h2 id="mapa-titulo">Mapa <span>técnico.</span></h2></div>
+                    <p>Uma leitura cartográfica das áreas que estruturam meu portfólio. Cada núcleo funciona como um território tecnológico, com foco, maturidade e rotas de conexão entre software, dados, arquitetura, gestão, IA e computação quântica.</p>
                 </div>
                 <div class="mapa-lab__grid">
-                    <div class="mapa-lab__rede" role="group" aria-label="Áreas de conhecimento">
-                        <span class="mapa-lab__eixo" aria-hidden="true"></span>
-                        <button class="mapa-lab__no is-selected" type="button" data-area="software" aria-pressed="true">⌘ <span>DESENVOLVIMENTO</span></button>
-                        <button class="mapa-lab__no" type="button" data-area="dados" aria-pressed="false">▦ <span>DADOS</span></button>
-                        <button class="mapa-lab__no" type="button" data-area="arquitetura" aria-pressed="false">⬡ <span>ARQUITETURA</span></button>
-                        <button class="mapa-lab__no" type="button" data-area="gestao" aria-pressed="false">◈ <span>GESTÃO</span></button>
-                        <button class="mapa-lab__no" type="button" data-area="ia" aria-pressed="false">✧ <span>IA E INOVAÇÃO</span></button>
-                        <button class="mapa-lab__no" type="button" data-area="quantica" aria-pressed="false">◎ <span>COMPUTAÇÃO QUÂNTICA</span></button>
+                    <div class="mapa-lab__cartografia" aria-label="Mapa técnico das áreas de conhecimento">
+                        <div class="mapa-lab__hud"><span>CAMADA ATIVA <b id="mapa-layer">SOFTWARE CORE</b></span><span>COORDENADA <b id="mapa-coord">Q1 · N14</b></span><span>TRAÇADO <b id="mapa-tracado">ROTAS INTERLIGADAS</b></span></div>
+                        <div class="mapa-lab__canvas" role="group" aria-label="Nós cartográficos de conhecimento">
+                            <span class="mapa-lab__sector mapa-lab__sector--nw">QUADRANTE NORTE</span>
+                            <span class="mapa-lab__sector mapa-lab__sector--ne">SETOR LESTE</span>
+                            <span class="mapa-lab__sector mapa-lab__sector--sw">SETOR OESTE</span>
+                            <span class="mapa-lab__sector mapa-lab__sector--se">QUADRANTE SUL</span>
+                            <span class="mapa-lab__line mapa-lab__line--1" aria-hidden="true"></span>
+                            <span class="mapa-lab__line mapa-lab__line--2" aria-hidden="true"></span>
+                            <span class="mapa-lab__line mapa-lab__line--3" aria-hidden="true"></span>
+                            <span class="mapa-lab__line mapa-lab__line--4" aria-hidden="true"></span>
+                            <span class="mapa-lab__line mapa-lab__line--5" aria-hidden="true"></span>
+                            <span class="mapa-lab__crosshair" aria-hidden="true"></span>
+                            <button class="mapa-lab__node mapa-lab__node--software is-selected" type="button" data-area="software" aria-pressed="true"><small><span>Q1 · N14</span><b>ATIVO</b></small><strong>DESENVOLVIMENTO</strong><p>Interfaces, front-end, lógica e construção de produtos.</p></button>
+                            <button class="mapa-lab__node mapa-lab__node--dados" type="button" data-area="dados" aria-pressed="false"><small><span>Q2 · D22</span><b>ANÁLISE</b></small><strong>DADOS</strong><p>Indicadores, consultas, leitura operacional e informação útil.</p></button>
+                            <button class="mapa-lab__node mapa-lab__node--arquitetura" type="button" data-area="arquitetura" aria-pressed="false"><small><span>Q3 · A07</span><b>ESTRUTURA</b></small><strong>ARQUITETURA</strong><p>Decisão técnica, integrações e desenho de sistemas.</p></button>
+                            <button class="mapa-lab__node mapa-lab__node--gestao" type="button" data-area="gestao" aria-pressed="false"><small><span>Q4 · G11</span><b>OPERAÇÃO</b></small><strong>GESTÃO</strong><p>Planejamento, processos, implantação e organização.</p></button>
+                            <button class="mapa-lab__node mapa-lab__node--ia" type="button" data-area="ia" aria-pressed="false"><small><span>Q5 · I18</span><b>INOVAÇÃO</b></small><strong>IA E AUTOMAÇÃO</strong><p>Experimentação aplicada, produtividade e novas abordagens.</p></button>
+                            <button class="mapa-lab__node mapa-lab__node--quantica" type="button" data-area="quantica" aria-pressed="false"><small><span>Q6 · Q03</span><b>PESQUISA</b></small><strong>COMPUTAÇÃO QUÂNTICA</strong><p>Exploração conceitual de qubits, portas e circuitos.</p></button>
+                        </div>
+                        <div class="mapa-lab__legend"><span>NÚCLEOS MAPEADOS</span><span>SETOR SELECIONADO</span><span>ROTAS DE TRANSIÇÃO</span></div>
                     </div>
                     <div class="mapa-lab__detalhe" aria-live="polite">
-                        <small>ÁREA SELECIONADA / 01 DE 06</small>
+                        <small id="mapa-area-indice">SETOR / 01 DE 06 · QUADRANTE NORTE</small>
                         <h3 id="mapa-area-titulo">Desenvolvimento de Software</h3>
                         <p id="mapa-area-texto">Criação de aplicações web, organização do código, interfaces e integrações.</p>
+                        <div class="mapa-lab__metrics">
+                            <div class="mapa-lab__metric"><span>Maturidade</span><strong id="mapa-area-nivel">EM EXPANSÃO</strong></div>
+                            <div class="mapa-lab__metric"><span>Foco técnico</span><strong id="mapa-area-foco">PRODUTO DIGITAL</strong></div>
+                            <div class="mapa-lab__metric"><span>Coordenada</span><strong id="mapa-area-coord">Q1 · N14</strong></div>
+                        </div>
                         <div class="mapa-lab__etiquetas" id="mapa-area-tags"><span>HTML</span><span>CSS</span><span>JAVASCRIPT</span></div>
-                        <span class="mapa-lab__rodape">Áreas com níveis distintos de experiência e estudo.</span>
+                        <div class="mapa-lab__rotas" id="mapa-area-rotas"><span class="mapa-lab__rota">INTERFACES</span><span class="mapa-lab__rota">FRONT-END</span><span class="mapa-lab__rota">EXPERIÊNCIA</span></div>
+                        <span class="mapa-lab__rodape" id="mapa-area-rodape">Leitura cartográfica de competências: áreas com diferentes graus de prática, estudo contínuo e potencial de evolução.</span>
                     </div>
                 </div>
             </section>
@@ -2988,23 +3077,31 @@ body.portfolio-viewer-open { overflow: hidden; }
   }
 
   const areas={
-    software:{titulo:"Desenvolvimento de Software",texto:"Desenvolvimento de páginas web, interfaces interativas, fundamentos de programação e organização de código. O próprio portfólio é uma demonstração prática.",tags:["HTML","CSS","JAVASCRIPT","INTERFACES"]},
-    dados:{titulo:"Dados e Inteligência",texto:"Interesse em SQL, análise de informações, indicadores e painéis de dados. O Finance OS é um projeto relacionado à organização e à visualização de informações financeiras.",tags:["SQL","ANÁLISE","INDICADORES","DASHBOARDS"]},
-    arquitetura:{titulo:"Arquitetura de Software",texto:"Estudo de integrações, modularidade, APIs, boas práticas e decisões que facilitam a evolução e a manutenção de sistemas.",tags:["APIs","INTEGRAÇÃO","MODELAGEM","SISTEMAS"]},
-    gestao:{titulo:"Gestão e Projetos",texto:"Experiência com processos, implantação e organização de demandas, combinada ao interesse em planejamento, indicadores e gestão de projetos de tecnologia.",tags:["PROCESSOS","PLANEJAMENTO","GESTÃO DE TI"]},
-    ia:{titulo:"IA, Automação e Inovação",texto:"Exploração de aplicações de inteligência artificial, automações e novas abordagens para resolver problemas e melhorar produtos digitais.",tags:["AUTOMAÇÃO","IA APLICADA","EXPERIMENTAÇÃO"]},
-    quantica:{titulo:"Computação Quântica",texto:"Tema de estudo e curiosidade científica: qubits, portas e circuitos quânticos. Área de pesquisa pessoal, não experiência profissional declarada.",tags:["QUBITS","CIRCUITOS","PESQUISA"]}
+    software:{titulo:"Desenvolvimento de Software",texto:"Criação de aplicações web, interfaces, componentes visuais, organização de código e experiência de navegação. O próprio portfólio funciona como prova prática desse território.",tags:["HTML","CSS","JAVASCRIPT","UI"],nivel:"EM EXPANSÃO",foco:"PRODUTO DIGITAL",coord:"Q1 · N14",layer:"SOFTWARE CORE",tracado:"INTERFACE / LÓGICA / ENTREGA",rotas:["INTERFACES","FRONT-END","COMPONENTES"],rodape:"Base estrutural do portfólio, com foco em construção de experiência digital, organização visual e evolução contínua do código."},
+    dados:{titulo:"Dados e Inteligência",texto:"Interesse em SQL, leitura de indicadores, organização de informações e visualização para tomada de decisão. O Finance OS aproxima esse núcleo da prática cotidiana.",tags:["SQL","INDICADORES","ANÁLISE","DASHBOARDS"],nivel:"EM CONSOLIDAÇÃO",foco:"LEITURA ANALÍTICA",coord:"Q2 · D22",layer:"DATA INSIGHT",tracado:"COLETA / LEITURA / AÇÃO",rotas:["MODELAGEM","VISUALIZAÇÃO","CONSULTAS"],rodape:"Território voltado a transformar informação em percepção útil, conectando dados a clareza operacional."},
+    arquitetura:{titulo:"Arquitetura de Software",texto:"Estudo de integrações, modularidade, APIs, responsabilidades entre camadas e decisões que tornam sistemas mais claros, sustentáveis e escaláveis.",tags:["APIs","INTEGRAÇÃO","MODELAGEM","ESTRUTURA"],nivel:"EM ESTUDO ATIVO",foco:"ESTRUTURA DE SISTEMAS",coord:"Q3 · A07",layer:"ARCH LAYER",tracado:"MÓDULOS / REGRAS / FLUXOS",rotas:["PADRÕES","INTEGRAÇÕES","ESCALABILIDADE"],rodape:"Núcleo de desenho e organização técnica, importante para transformar projetos em soluções mais maduras."},
+    gestao:{titulo:"Gestão e Projetos",texto:"Experiência com processos, implantação e organização de demandas, combinada ao interesse em planejamento, acompanhamento visual e gestão de tecnologia com clareza operacional.",tags:["PROCESSOS","PLANEJAMENTO","GESTÃO TI","IMPLANTAÇÃO"],nivel:"BASE PRÁTICA",foco:"COORDENAÇÃO OPERACIONAL",coord:"Q4 · G11",layer:"OPS CONTROL",tracado:"PROCESSO / RITMO / ENTREGA",rotas:["IMPLANTAÇÃO","GESTÃO","ACOMPANHAMENTO"],rodape:"Território sustentado por experiência prática, muito útil para ligar execução, organização e evolução dos projetos."},
+    ia:{titulo:"IA, Automação e Inovação",texto:"Exploração de aplicações de inteligência artificial, automações e novos fluxos digitais para acelerar tarefas, testar ideias e ampliar possibilidades de produto.",tags:["AUTOMAÇÃO","IA APLICADA","EXPERIMENTAÇÃO","INOVAÇÃO"],nivel:"EXPERIMENTAL",foco:"AMPLIAÇÃO DE CAPACIDADE",coord:"Q5 · I18",layer:"INNOVATION GRID",tracado:"TESTE / APRENDIZADO / GANHO",rotas:["AUTOMAÇÕES","PROMPTS","PROTOTIPAÇÃO"],rodape:"Camada voltada a descoberta, experimentação e aceleração de processos com apoio de ferramentas inteligentes."},
+    quantica:{titulo:"Computação Quântica",texto:"Área de pesquisa e curiosidade científica, com interesse em qubits, portas lógicas, circuitos quânticos e visão de longo prazo sobre tecnologias emergentes.",tags:["QUBITS","CIRCUITOS","PESQUISA","EMERGENTE"],nivel:"PESQUISA PESSOAL",foco:"EXPLORAÇÃO CONCEITUAL",coord:"Q6 · Q03",layer:"QUANTUM FIELD",tracado:"TEORIA / CURIOSIDADE / FUTURO",rotas:["QUBITS","PORTAS","ESTUDO"],rodape:"Núcleo de pesquisa pessoal que amplia repertório tecnológico e visão sobre fronteiras futuras da computação."}
   };
   function mostrarArea(chave) {
     const area=areas[chave];if(!area)return;
     const indice=Object.keys(areas).indexOf(chave)+1;
     $("mapa-area-titulo").textContent=area.titulo;
     $("mapa-area-texto").textContent=area.texto;
-    document.querySelector(".mapa-lab__detalhe>small").textContent="ÁREA SELECIONADA / "+String(indice).padStart(2,"0")+" DE 06";
+    $("mapa-area-indice").textContent="SETOR / "+String(indice).padStart(2,"0")+" DE 06 · "+area.coord;
+    $("mapa-area-nivel").textContent=area.nivel;
+    $("mapa-area-foco").textContent=area.foco;
+    $("mapa-area-coord").textContent=area.coord;
+    $("mapa-layer").textContent=area.layer;
+    $("mapa-coord").textContent=area.coord;
+    $("mapa-tracado").textContent=area.tracado;
+    $("mapa-area-rodape").textContent=area.rodape;
     const tags=$("mapa-area-tags");tags.replaceChildren();
     area.tags.forEach(tag=>{const span=document.createElement("span");span.textContent=tag;tags.append(span);});
+    const rotas=$("mapa-area-rotas");rotas.replaceChildren();
+    area.rotas.forEach(rota=>{const span=document.createElement("span");span.className="mapa-lab__rota";span.textContent=rota;rotas.append(span);});
     document.querySelectorAll("[data-area]").forEach(btn=>{const selecionado=btn.dataset.area===chave;btn.classList.toggle("is-selected",selecionado);btn.setAttribute("aria-pressed",String(selecionado));});
-    
   }
   function iniciarMapa() {
     document.querySelectorAll("[data-area]").forEach(botao=>botao.addEventListener("click",()=>mostrarArea(botao.dataset.area)));
