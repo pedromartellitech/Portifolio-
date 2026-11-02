@@ -562,25 +562,27 @@ a {
     display: none;
     position: absolute;
     left: 14px;
-    right: 14px;
     bottom: 14px;
     z-index: 3;
-    padding: 10px 12px;
-    border: 1px solid rgba(255,255,255,.14);
-    background: linear-gradient(90deg, rgba(7,16,18,.92), rgba(7,16,18,.62));
+    max-width: min(72%, 320px);
+    padding: 8px 11px;
+    border: 1px solid rgba(233,173,120,.18);
+    background: rgba(7,16,18,.68);
+    backdrop-filter: blur(6px);
     color: #f0eadf;
-    font-size: .62rem;
-    line-height: 1.55;
-    letter-spacing: .12em;
+    font-size: .58rem;
+    line-height: 1.35;
+    letter-spacing: .14em;
     text-transform: uppercase;
+    box-shadow: 0 10px 25px rgba(0,0,0,.22);
 }
 
 .finance-hero-caption strong {
     display: block;
-    margin-bottom: 4px;
+    margin: 0;
     color: #e9ad78;
-    font-size: .72rem;
-    letter-spacing: .16em;
+    font-size: .68rem;
+    letter-spacing: .18em;
 }
 
 .finance-sidebar {
@@ -1608,7 +1610,6 @@ body.portfolio-viewer-open { overflow: hidden; }
                                     alt="Tela inicial do Finance OS Online" />
                                 <div class="finance-hero-caption">
                                     <strong>TELA INICIAL DO FINANCE OS</strong>
-                                    Prévia visual da aplicação real publicada no Streamlit Cloud. A exploração pública utiliza dados fictícios.
                                 </div>
                                 <div class="finance-sidebar">
                                     <i></i>
